@@ -1,42 +1,213 @@
-.App {
+.app {
+  font-family: -apple-system, system-ui, sans-serif;
+  background: var(--tg-theme-bg-color, #f0f8ff);
+  color: var(--tg-theme-text-color, #333);
+  padding: 16px;
+  max-width: 100%;
+  margin: 0;
+}
+
+:root {
+  --primary: #229ED9;
+  --button: var(--tg-theme-button-color, #229ED9);
+  --button-text: var(--tg-theme-button-text-color, white);
+  --gradient-start: #00c6fb;
+  --gradient-end: #005bea;
+}
+body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	}
+	
+.referral-banner {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.referral-banner h3 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.referral-info {
+  background: rgba(255,255,255,0.1);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.referral-steps {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.referral-steps div {
+  margin: 8px 0;
+}
+
+.card {
+  background: var(--tg-theme-secondary-bg-color, white);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin: 0 0 16px;
+}
+
+.info {
+  background: rgba(34,158,217,0.05);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+.progress-container {
+  margin: 16px 0;
+  position: relative;
+}
+
+progress {
+  width: 100%;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--button-text);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.button {
+  background: var(--button);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: rgba(34,158,217,0.05);
+  padding: 12px;
+  border-radius: 8px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
   color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  z-index: 1000;
 }
 
-.App-link {
-  color: #61dafb;
+.ad-note {
+  font-size: 12px;
+  color: gray;
+  margin-top: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.daily-reward-card {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: white;
+  text-align: center;
+}
+
+.daily-reward-card h2 {
+  color: white;
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+}
+
+.daily-reward-info {
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .daily-reward-card {
+    padding: 14px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-button {
-  font-size: calc(10px + 2vmin);
+  .daily-reward-card h2 {
+    font-size: 1rem;
+  }
+
+  .daily-reward-info {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 }
