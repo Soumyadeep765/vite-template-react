@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite React App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Ads</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <script src="https://js.onclckvd.com/in-stream-ad-admanager/tma.js"></script>
+  <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+  <script src="https://cdn.tgads.space/assets/js/tg-ads-co-widget.min.js"></script>
+  <script type="text/javascript" src="https://cdn.tgads.space/assets/js/adexium-widget.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    window.AdsgramController = {
+      init: function() {
+        return window.Adsgram.init({
+          blockId: "int-11033",
+          onLoad: function() {
+            console.log('Adsgram loaded');
+          },
+          onError: function(error) {
+            console.error('Adsgram error:', error);
+          }
+        });
+      }
+    };
+    
+    window.tgAdsWidget = new TGAdsWidget({
+      wid: '5f0f02a2-34a4-433e-aaf0-0efdb52c8b97',
+      adFormat: 'interstitial',
+      firstAdImpressionIntervalInSeconds: 1,
+      adImpressionIntervalInSeconds: 1,
+      debug: false
+    });
+    
+    window.tgAdsWidget.init();
+    
+    window.tgAdsWidget.on('adDisplayed', () => {
+      console.log('TGAds ad displayed');
+    });
+    
+    window.tgAdsWidget.on('adPlaybackCompleted', () => {
+      console.log('TGAds ad completed');
+      if (window.handleTGAdsCompletion) {
+        window.handleTGAdsCompletion();
+      }
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const adexiumWidget = new AdexiumWidget({
+        wid: 'e25e2cdd-9e8c-440f-ad8a-d48b90ec94b3',
+        adFormat: 'push-like'
+      });
+      adexiumWidget.init();
+    });
+  </script>
+</body>
 </html>
